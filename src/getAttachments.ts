@@ -13,6 +13,15 @@ await ensureDir(downloadDirectory);
 const CREDENTIALS_PATH = "./config/mail.json";
 const TOKEN_PATH = "./config/token.json";
 
+// Define o tipo do token
+interface OAuth2Token {
+  access_token: string;
+  refresh_token?: string;
+  scope: string;
+  token_type: string;
+  expiry_date: number;
+}
+
 // Carrega as credenciais do cliente a partir do arquivo local
 async function loadCredentials() {
   const content = await Deno.readTextFile(CREDENTIALS_PATH);
@@ -20,7 +29,7 @@ async function loadCredentials() {
 }
 
 // Salva o token em disco para uso posterior
-async function saveToken(token: any) {
+async function saveToken(token: OAuth2Token) {
   await Deno.writeTextFile(TOKEN_PATH, JSON.stringify(token));
   console.log("Token armazenado em", TOKEN_PATH);
 }

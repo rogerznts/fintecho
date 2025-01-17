@@ -4,14 +4,6 @@ import { readOfx } from "./src/ofxParser.ts";
 import { classifyTransaction } from "./src/classifyTransaction.ts";
 import { normalizeText } from "./src/utils.ts";
 
-// Mock do arquivo .env para testes
-const mockEnv = {
-  SPREADSHEET_ID: "test_spreadsheet_id",
-  SHEET_RANGE: "A2:F",
-  SHEET_IN: "Entrada",
-  SHEET_OUT: "Saída"
-};
-
 // Teste de carregamento das variáveis de ambiente
 Deno.test("deve carregar variáveis de ambiente corretamente", async () => {
   const env = await load();
@@ -34,7 +26,7 @@ Deno.test("deve ler arquivo OFX corretamente", async () => {
 });
 
 // Teste de classificação de transações
-Deno.test("deve classificar transações corretamente", async () => {
+Deno.test("deve classificar transações corretamente",  () => {
   const testCases = [
     {
       memo: "LIGHT SERV ELETRICIDADE",
@@ -55,10 +47,10 @@ Deno.test("deve classificar transações corretamente", async () => {
   ];
 
   for (const testCase of testCases) {
-    const category = await classifyTransaction(testCase.memo);
+    const category = classifyTransaction(testCase.memo);
     assertEquals(
       category, 
-      testCase.expectedCategory, 
+      testCase.expectedCategory,
       `Transação "${testCase.memo}" deveria ser classificada como "${testCase.expectedCategory}"`
     );
   }
