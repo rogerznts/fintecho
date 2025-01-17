@@ -1,0 +1,59 @@
+# Arquivos de sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Arquivos de ambiente e configuração
+.env
+config/auth.json
+config/mail.json
+config/token.json
+
+# Diretório de trabalho temporário
+workdir/
+tmp/
+
+# Arquivos de log
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Diretórios de dependências
+node_modules/
+vendor/
+
+# Arquivos de build e distribuição
+dist/
+build/
+out/
+
+# Arquivos de cache
+.deno/
+.cache/
+.npm/
+
+# IDEs e editores
+.idea/
+.vscode/
+*.swp
+*.swo
+*.swn
+*.bak
+*.orig
+*~
+
+# Arquivos de teste
+coverage/
+.nyc_output/
+
+# Arquivos compilados
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Arquivos específicos do projeto
+*.ofx
+
+fintecho
